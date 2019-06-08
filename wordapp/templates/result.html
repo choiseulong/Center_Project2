@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+    <style>
+    #main {
+        text-align: center;
+        font-family: 'Jua', sans-serif;
+    }
+    #fulltext {
+        overflow: hidden; 
+        text-overflow: ellipsis;
+        white-space: nowrap; 
+        font-size: 22px;
+    }
+    body{
+        background-image: url("{% static '123.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        background-color: black;
+    }
+    #table{
+        width: 40%;
+    }
+    #mark{
+        position: absolute;
+        top : 5px;
+        left : 10px;
+        color: #3e34d4;
+    }
+    </style>
+    <title>Ongs_Word Count</title>
+    
+</head>
+<body>
+<div class="container" id="main">
+    <ul class="nav justify-content-end" >
+                    <li class="nav-item">
+                      <a class="nav-link active" href="{% url 'index' %}" style="color: #3e34d4;">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'about' %}" style="color: #3e34d4;">ABOUT_WORD COUNT</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://choiseulong.github.io/Center_Project.github.io/" style="color: #3e34d4;" target="_blank">ABOUT_ME</a>
+                    </li>
+                  </ul>
+                  <br>
+    <p id="mark">Likelion HYUERICA 7th '슬옹'</p>
+    <div class="container">
+        <h1> 총 단어 수는 '{{ total }}'개 입니다</h1>
+        <hr align="center" style="border: solid 2px;">
+    </div>
+    <div class="container">
+        <h1> 입력한 텍스트 </h1>
+        <br>
+        <p id='fulltext'>{{ full }}</p>
+        <button class="btn btn-primary btn-lg"><a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" 
+            href="javascript:void(0)" style="color: white;"> 
+                더 보기
+                </a><div style="DISPLAY: none">
+                        {{ full }}
+                </div>
+            </button>
+    </div>
+    <br>
+    <hr align="center" style="border: solid 2px; width: 80%;">
+    <br>
+    <div class="container">
+        <h2> 가장 많이 나온 단어는 '{{ TOP1 }}' 이며, {{ TOP1_VAL }}회 등장했습니다.</h2>
+        <br>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModalLong">
+                전체보기
+              </button>
+              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">전체보기</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" style="text-align: left;">
+                            {% for a,b in dic %}
+                            <h5>단어 <strong>'{{a}}',</strong> {{b}}번 등장했어요.</h5>
+                            <hr align="left" style="border: solid 1px; width: 70%;">
+                            {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    </div>
+    <br>
+    <hr align="center" style="border: solid 2px; width: 60%;">
+    <div class="container">
+            <h3> TOP 5 </h3> 
+            <h5>단어를 클릭하면 검색 해드려요.</h5>
+            <br>
+            <div class="container" id="table">
+            <ul class="list-group">
+                    {% for A,B in TOP5 %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="https://www.google.com/search?q={{ A }}&oq={{ A }}&aqs=chrome..69i57j69i60j0l4.4535j0j7&sourceid=chrome&ie=UTF-8">{{ A }}</a> 
+                        <span class="badge badge-primary badge-pill">{{ B }} 번</span>
+                    </li>
+                    {% endfor %}
+                    <br>
+            </ul>
+            </div>
+<hr align="center" style="border: solid 2px; width: 38%">
+    </div>
+</div>
+</body>
+</html>

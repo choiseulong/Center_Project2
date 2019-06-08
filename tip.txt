@@ -1,0 +1,16 @@
+{{ value | length }} value 의 길이반환
+{{ value | lower }} value 를 소문자로 출력 등
+ 
+{% tag %} 
+for~ in~
+if~
+elif~
+else~
+endif  
+{% endtag %}
+
+
+{% url 'url_name' %}
+
+탬플릿 상속
+form action = 어디로 보낼지

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+    <title>Ongs_Word Count</title>
+    <style>
+    body {
+        background-image: url("{% static '123.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        background-position: center center;
+        background-attachment: fixed;
+        background-color: #3e34d4;
+    }
+    #mark{
+        position: absolute;
+        top : 15px;
+        left : 15px;
+        color: black;
+    }
+    #main{
+        text-align: center;
+        font-family: 'Jua', sans-serif;
+        margin-top: 10px;
+    }
+    #text{
+        text-align: left;
+    }
+    </style>
+</head>
+<body>
+<div class = "container" id = main>
+        <ul class="nav justify-content-end" >
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'index' %}" style="color: #3e34d4;">HOME</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about' %}" style="color: #3e34d4;">ABOUT_WORD COUNT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://choiseulong.github.io/Center_Project.github.io/" style="color: #3e34d4;" target="_blank">ABOUT_ME</a>
+                </li>
+              </ul>
+              <br>
+        <p id="mark">Likelion HYUERICA 7th '슬옹'</p> <br>
+    <div class="container">
+            <h2> 안녕하세요. 제가 만든 페이지를 방문해 주신 멋사여러분! 감사합니다!! <BR><BR>1의 도움이라도 되었으면 하는 바람을 가지고 ABOUT 페이지를 적어두려고해요.</h2>
+            <hr align="center" style="border: solid 2px; width: 100%;">
+    </div>    
+    <div class="container">
+        <Br>
+        <h4>본 페이지에 사용된 코드에 대한 짧막한 기록을 남깁니다.(나중에 저도 볼려구 ㅎㅎ)</h4>
+    </div>
+    <div class="container" id="text">
+        <br>
+            <ol style="color: black; font-size: 18px;">
+                <li>색상 참고는 encycolorpedia 사이트를 이용했습니다. 특정 색상을 검색하면 어울리는 색? 정반대 색? 등을 보여줍니다. <a href="https://encycolorpedia.kr/" target="_blank">사이트 바로가기</a></li>
+                <br>
+                <li>CTRL+C, V만으로 사용할 수 있는 간단한 이모티콘은 하이펜팔 사이트를 이용했어요. <a href="http://www.hipenpal.com/tool/emoji-emoticon-dictionary-in-korean.php" target="_blank">사이트 바로가기</a></li><Br>
+                <li> 페이지 상단 좌측구석에 위치한 Likelion HYUERICA 7th은<br> 
+                        #mark{ <br>
+                        position: absolute; <br>
+                        top : 5px; <br>
+                        left : 10px;  } <br> 처럼 해서 워터마크 느낌으로 두고 싶었어요! 다양한 방법들이 있을 것 같네요.</li><br>
+                <li>백그라운드 이미지를 두는 방법. <br>
+                        body { <br>
+                        background-image: url(""); <br>
+                        background-repeat: no-repeat; <br>
+                        background-size: cover; <br> 
+                        background-position: center center; <br>
+                        background-attachment: fixed;  }<br>
+                        바디 전체에 이미지를 입혔어요. 참고는<a href="https://visualize.tistory.com/405"> 여기 클릭! </a>
+                    </li><Br>
+                <li>
+                    Button 이나 Navs는 부트스트랩을 통해서 얻을 수 있는데 Textarea는 테마 구하기가 조금 더 번거로운 느낌은 저만 가지고 있었겠...죠?<br>
+                    textarea {<br>
+                        padding: .5em; 여백을 주는 건데 사실 placeholder 부분이 너무 경계에 딱 붙어서 뒀습니다.<br>
+                        line-height : normal;<br>
+                        border-radius: 3%;  테두리를 둥그~스름하게 만들어줍니다.<br>
+                        border:2px solid #3e34d4; }  <br>
+                    textarea::placeholder{  안내문? 같은 글귀를 꾸미는 방법! 이번과제하면서 ::로 스타일 입히는 것을 처음봤어요 <br>
+                        color:#3e34d4;<br>
+                        font-size: 25px;  }<br>
+                </li><br>
+                <li> 마지막으로 Result 페이지 속 버튼 입니다. 입력받은 텍스트를 펼쳐주는 기능은 <a href="https://ndbear.tistory.com/334">이 사이트를</a> 참고했습니다.<br><br>
+                    새 창으로 개별 단어 횟수를 보여주는 페이지는 부트스트랩을 참고했습니다. Table 로 만들어 보고 싶었는데 실패했습니다 ㅠㅠ
+                </li>
+            
+            </ol>
+    </div>
+</div>
+</body>
+</html>
