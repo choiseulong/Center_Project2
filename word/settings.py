@@ -1,5 +1,6 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(BASE_DIR)
 SECRET_KEY = 'i18$7@8bnp5)fee^tia91io-i(3xds@ti7k)^)plyrydtialu1'
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -64,6 +65,9 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = False
 STATIC_URL = '/static/'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    STATIC_DIR,
 ) 
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
